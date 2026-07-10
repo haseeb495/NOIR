@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-obsidian text-bone font-sans font-light antialiased;
+  }
+}
+
+/* gold ambient glow used on the hero */
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-60px, 40px) scale(1.15); }
+}
+.glow-drift { animation: drift 14s ease-in-out infinite alternate; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+.float { animation: float 6s ease-in-out infinite; }
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 26s linear infinite; }
+.spin-rev { animation: spin-slow 18s linear infinite reverse; }
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 24s linear infinite; }
+
+/* dark themed scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0B0B0D; }
+::-webkit-scrollbar-thumb { background: #2a2a30; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a42; }
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-drift, .float, .spin-slow, .spin-rev, .marquee-track { animation: none !important; }
+}
